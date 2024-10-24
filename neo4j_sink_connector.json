@@ -1,0 +1,18 @@
+{
+    "name": "neo4j-orders-connector",
+    "config": {
+        "connector.class": "org.neo4j.connectors.kafka.sink.Neo4jConnector",
+        "errors.log.enable": "true",
+        "errors.log.include.messages": "true",
+        "topics": "ecommerce.orders",
+        "errors.deadletterqueue.topic.name": "error-orders",
+        "errors.deadletterqueue.topic.replication.factor": "1",
+        "errors.deadletterqueue.context.headers.enable": "true",
+        "neo4j.uri": "bolt://neo4j:7687",
+        "neo4j.authentication.type": "BASIC",
+        "neo4j.authentication.basic.username": "neo4j",
+        "neo4j.authentication.basic.password": "neotest123",
+        "neo4j.cypher.bind-value-as-event": "true",
+        "neo4j.cypher.topic.ecommerce.orders": "WITH __value AS D MERGE (u:User {user_id: D.user_id}) MERGE (o:Order {order_id: D.order_id}) MERGE (u)-[:PLACED]->(o) WITH D, o UNWIND D.item_ids AS item_id MERGE (i:Item {item_id: item_id}) MERGE (o)-[:CONTAINS]->(i)"
+    }
+}

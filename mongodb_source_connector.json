@@ -1,0 +1,13 @@
+{
+    "name": "mongodb-orders-connector",
+    "config": {
+        "connector.class": "com.mongodb.kafka.connect.MongoSourceConnector",
+        "tasks.max": "1",
+        "connection.uri": "mongodb://mongodb:27017",
+        "database": "ecommerce",
+        "collection": "orders",
+        "pipeline": "[{ \"$match\": { \"operationType\": \"insert\" } }]",
+        "publish.full.document.only": "true",
+        "output.format.value": "json"
+    }
+}
