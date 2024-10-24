@@ -12,7 +12,7 @@ Such a setup can be used where the primary database is MongoDB and for recommend
 
 Setup on local using docker-compose
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 <img src="public/docker.png">
 
