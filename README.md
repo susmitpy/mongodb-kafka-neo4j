@@ -36,14 +36,24 @@ Note: The volume mapping is commented in the `docker-compose.yml` file. Uncommen
 #### Data in Kafka
 <img src="public/kafka.png">
 
-5. For Kafka Connect Worker as a Neo4j Sink Connector, download the self hosted version, extract it and place the folder in `kafka-connect-jars` folder. https://www.confluent.io/hub/neo4j/kafka-connect-neo4j
+5. Run query in Neo4j and see that there is no data. 
+    ```cypher
+    MATCH (n) RETURN n
+    ```
 
-6. Publish the `neo4j_sink_connector.json` configuration to Kafka Connect.
+6. For Kafka Connect Worker as a Neo4j Sink Connector, download the self hosted version, extract it and place the folder in `kafka-connect-jars` folder. https://www.confluent.io/hub/neo4j/kafka-connect-neo4j
+
+7. Publish the `neo4j_sink_connector.json` configuration to Kafka Connect.
     ```bash
     curl -X POST -H "Content-Type: application/json" --data @neo4j_sink_connector.json http://localhost:8083/connectors
     ```
 
-7. Doing so, the kafka connect worker will consume the data from the Kafka topic and write it to Neo4j
+8. Doing so, the kafka connect worker will consume the data from the Kafka topic and write it to Neo4j
+
+9. Run query in Neo4j to see all the data.
+    ```cypher
+    MATCH (n) RETURN n
+    ```
 
 ### Data in Neo4j
 <img src="public/neo4j.png"> 
