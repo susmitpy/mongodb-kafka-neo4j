@@ -1,4 +1,7 @@
 # MongoDB - Kafka - Neo4j
+
+I had the opportunity to speak about this at a meetup, the video recording for the same is can be found at: <a href="https://www.youtube.com/watch?v=kfMux6R-SXw">Youtube Video</a> &nbsp;&nbsp; <a href="https://susmitpy.github.io/talks/mongodb_change_stream">Slide Deck used in the talk</a>
+
 ```mermaid
 graph LR
 
